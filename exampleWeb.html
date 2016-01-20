@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
   <title>Example Web App</title>
   <meta charset="utf-8">
@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+  <script src="script.js"></script>
+
+
+
 </head>
 <body>
 
@@ -21,13 +28,19 @@
   </ul>
 
   <div class="tab-content">
-    <div id="login" class="tab-pane fade in active">
+    <div id="login" class="tab-pane fade in active" ng-controller="login">
       <form role="form">
         <h2 class="form-signin-heading">Sign in</h2>
         <div class="row">
+          <div class="col-md-12">
+            user: {{username}}            
+          </div>
+        </div>
+          
+        <div class="row">
           <div class="col-md-6 form-group">
             <label class="sr-only" for="email">Email address:</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email">
+            <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="username">
           </div>
         </div>
         <div class="row">
