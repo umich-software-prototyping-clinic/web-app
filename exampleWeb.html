@@ -4,13 +4,18 @@
   <title>Example Web App</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap requirements -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  
+  <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+  <!-- Parse -->
+  <script src="https://www.parsecdn.com/js/parse-1.6.7.min.js"></script>
+  <!--local page scripts-->
   <script src="script.js"></script>
+  <script src="keys.js"></script>
 
 
 
@@ -18,8 +23,8 @@
 <body>
 
 
-<div class="container">
-  <h2>Example</h2>
+<div class="container" ng-controller="main">
+  <h2>Welcome {{username}}!</h2>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#login">Login</a></li>
     <li><a data-toggle="tab" href="#signup">Signup</a></li>
@@ -32,70 +37,72 @@
       <form role="form">
         <h2 class="form-signin-heading">Sign in</h2>
         <div class="row">
-          <div class="col-md-12">
-            user: {{username}}            
-          </div>
-        </div>
-          
-        <div class="row">
           <div class="col-md-6 form-group">
-            <label class="sr-only" for="email">Email address:</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="username">
+            <label class="sr-only" for="username">Username</label>
+            <input type="username" class="form-control" id="username" placeholder="Enter username" ng-model="user.username">
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 form-group">
           <label class="sr-only" for="pwd">Password:</label>
-          <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+          <input type="password" class="form-control" id="pwd" placeholder="Enter password" ng-model="user.password">
           </div>
         </div>
-        <div class="checkbox">
-          <label><input type="checkbox"> Remember me</label>
-        </div>
-        <button type="submit" class="btn btn-default btn-primary">Submit</button>
+        <!-- <div class="checkbox">
+          <label><input type="checkbox">Remember me</label>
+        </div> -->
+        <button type="submit" class="btn btn-default btn-primary" ng-click="login()">Submit</button>
       </form>
     </div>
-    <div id="signup" class="tab-pane fade">
+
+    <div id="signup" class="tab-pane fade" ng-controller="signUp">
       <form role="form">
         <h2 class="form-signup-heading">Signup</h2>
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="sr-only" for="username">Username:</label>
+            <input type="text" class="form-control" id="username" placeholder="Username" ng-model="user.username">
+          </div>
+        </div>
         <div class="row form-group" >
           <div class="col-md-3">
             <label class="sr-only" for="first">First name:</label>
-            <input type="text" class="form-control" id="first" placeholder="First name">
+            <input type="text" class="form-control" id="first" placeholder="First name" ng-model="user.firstName">
           </div>
           <div class="col-md-3">
             <label class="sr-only" for="last">Last name:</label>
-            <input type="text" class="form-control" id="last" placeholder="Last name">
+            <input type="text" class="form-control" id="last" placeholder="Last name" ng-model="user.lastName">
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 form-group">
             <label class="sr-only" for="email">Email address:</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email">
+            <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="user.email">
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 form-group">
             <label class="sr-only" for="pwd">Desired Password:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" ng-model="user.password">
           </div>
         </div>
-        <button type="submit" class="btn btn-default btn-primary">Register</button>
+        <button type="submit" class="btn btn-default btn-primary" ng-click="signUp()">Register</button>
       </form>
     </div>
-    <div id="reset" class="tab-pane fade">
+
+    <div id="reset" class="tab-pane fade" ng-controller="reset">
       <h3>Reset password</h3>
       <p>Please provide your email so we may send you password reset instructions</p>
       <div class="row">
           <div class="col-md-6 form-group">
             <label class="sr-only" for="email">Email address:</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email">
+            <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="email">
           </div>
         </div>
-        <button type="submit" class="btn btn-default btn-primary">Submit</button>
+        <button type="submit" class="btn btn-default btn-primary" ng-click="resetPassword()">Submit</button>
     </div>
-    <div id="logout" class="tab-pane fade">
-      <h3>Logged out</h3>
+    <div id="logout" class="tab-pane fade" ng-controller="logout">
+      <button type="submit" class="btn btn-default btn-primary" ng-click="logout()">Logout</button>
     </div>
   </div>
 </div>
