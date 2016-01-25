@@ -27,6 +27,7 @@
   <h2>Welcome {{username}}!</h2>
   <ul class="nav nav-tabs">
     <li role="presentation"><a data-toggle="tab" href="#userlist">User List</a></li> 
+    <li role="presentation"><a data-toggle="tab" href="#print">Print Text</a></li> 
     <li role="presentation" class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
         Account <span class="caret"></span>
@@ -48,7 +49,9 @@
     </div>
 
     <div id="print" class="tab-pane fade">
+
       <button type="button" class="btn btn-primary btn-lg">Print text</button>
+
     </div>
     
     <div id="login" class="tab-pane fade in active" ng-controller="login">
@@ -69,10 +72,19 @@
         <!-- <div class="checkbox">
           <label><input type="checkbox">Remember me</label>
         </div> -->
-        <button type="submit" class="btn btn-default btn-primary" ng-click="login()">Submit</button>
+        
       </form>
-        <a data-toggle="tab" href="#signup">Signup</a>
-        <a data-toggle="tab" href="#reset">Reset Password</a>
+      <div class="container">
+        <div class="row">
+          <button type="submit" class="btn btn-default btn-primary col-sm-2" ng-click="login()">Submit</button>
+        </div>
+        <div class="row">
+          <button data-toggle="tab" class="btn btn-default btn-primary col-sm-2" href="#reset">Password Reset</button>
+        </div>
+        <div class="row">
+          <button data-toggle="tab" class="btn btn-default btn-primary col-sm-2" href="#signup">Signup</button>
+        </div>
+      </div>
     </div>
 
     <div id="signup" class="tab-pane fade" ng-controller="signUp">
@@ -114,12 +126,12 @@
       <h3>Reset password</h3>
       <p>Please provide your email so we may send you password reset instructions</p>
       <div class="row">
-          <div class="col-md-6 form-group">
-            <label class="sr-only" for="email">Email address:</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="email">
-          </div>
+        <div class="col-md-6 form-group">
+          <label class="sr-only" for="email">Email address:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="email">
         </div>
-        <button type="submit" class="btn btn-default btn-primary" ng-click="resetPassword()">Submit</button>
+      </div>
+      <button type="submit" class="btn btn-default btn-primary" ng-click="resetPassword()">Submit</button>
     </div>
     <div id="logout" class="tab-pane fade" ng-controller="logout">
       <button type="submit" class="btn btn-default btn-primary" ng-click="logout()">Logout</button>
