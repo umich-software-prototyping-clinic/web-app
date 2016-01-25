@@ -5,8 +5,27 @@ var app = angular.module('app', ['keys']);
 
 // create the controller and inject Angular's $scope
 app
-.controller('main', ['$scope', '$rootScope', function($scope, $rootScope){
-   $scope.username = $rootScope.username;
+.controller('main', ['$scope', '$rootScope', 'ParseSvc', function($scope, $rootScope, ParseSvc){
+   $scope.username = ParseSvc.getUsername();
+}])
+.controller('userlist', ['$scope', 'ParseSvc', function($scope, ParseSvc){
+  $scope.users = [
+    {
+      username: 'one'
+    }, 
+    {
+      username: 'two'
+    }, 
+    {
+      username: 'three'
+    }, 
+    {
+      username: 'four'
+    }, 
+    {
+      username: 'five'
+    } 
+  ];
 }])
 .controller('login', ['$scope', '$rootScope','ParseSvc', function($scope, $rootScope, ParseSvc){
    $scope.user = {
@@ -15,7 +34,6 @@ app
    };
    if(ParseSvc.isRegistered) {
       $rootScope.username = ParseSvc.getUsername();
-      $state.go('tab.search');
   }
    $scope.login = function () {
       ParseSvc.login($scope.user)
@@ -32,7 +50,6 @@ app
    };
    if(ParseSvc.isRegistered) {
       $rootScope.username = ParseSvc.getUsername();
-      $state.go('tab.search');
    }
    $scope.signUp = function () {
       ParseSvc.signUp($scope.user)
@@ -120,7 +137,10 @@ app
    },
    logout: function() {
       Parse.User.logOut();
+      console.log('logged out');
+      alert('logged out');
       var currentUser = Parse.User.current(); 
+      user = Parse.User.current(); 
    }
 };
 }])
