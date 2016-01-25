@@ -141,6 +141,9 @@ app
       alert('logged out');
       var currentUser = Parse.User.current(); 
       user = Parse.User.current(); 
+   },
+   getUsers: function() {
+      
    }
 };
 }])
