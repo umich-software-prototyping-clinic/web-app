@@ -9,23 +9,14 @@ app
    $scope.username = ParseSvc.getUsername();
 }])
 .controller('userlist', ['$scope', 'ParseSvc', function($scope, ParseSvc){
-  $scope.users = [
-    {
-      username: 'one'
-    }, 
-    {
-      username: 'two'
-    }, 
-    {
-      username: 'three'
-    }, 
-    {
-      username: 'four'
-    }, 
-    {
-      username: 'five'
-    } 
-  ];
+  $scope.sucessCallback = function(results) {
+    for (i = 0; i < results.length; ++i) {
+      $scope.users.push(results[i].getUsername());
+    }
+    console.log($scope.users);
+  };
+  ParseSvc.getUsers($scope.sucessCallback);
+  $scope.users = [];
 }])
 .controller('login', ['$scope', '$rootScope','ParseSvc', function($scope, $rootScope, ParseSvc){
    $scope.user = {
@@ -142,8 +133,12 @@ app
       var currentUser = Parse.User.current(); 
       user = Parse.User.current(); 
    },
-   getUsers: function() {
-      
+   getUsers: function(sucessCallback) {
+      var user_query = new Parse.Query(Parse.User);
+      user_query.select("username");
+      user_query.find().then(function(results) {
+          sucessCallback(results);
+      });
    }
 };
 }])
