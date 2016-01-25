@@ -19,6 +19,19 @@ app
   };
   ParseSvc.getUsers($scope.sucessCallback);
 }])
+.controller('print', ['$scope', function($scope){
+   $scope.show_content = false;
+   $scope.printedText = "";
+   
+   $scope.print = function() {
+      $scope.show_content = !$scope.show_content;
+      if($scope.show_content)
+         $scope.printedText = "Hello World";
+      else
+         $scope.printedText = "";
+   }
+}])
+
 .controller('login', ['$scope', '$rootScope','ParseSvc', function($scope, $rootScope, ParseSvc){
    $scope.user = {
       username: null,
