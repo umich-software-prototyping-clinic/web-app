@@ -10,7 +10,7 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
   <!-- Parse -->
   <script src="https://www.parsecdn.com/js/parse-1.6.7.min.js"></script>
   <!--local page scripts-->
@@ -48,9 +48,11 @@
       </ul>
     </div>
 
-    <div id="print" class="tab-pane fade">
-
-      <button type="button" class="btn btn-primary btn-lg">Print text</button>
+    <div id="print" class="tab-pane fade" ng-controller="print">
+      <p>
+        {{printedText}}
+      </p>
+      <button type="button" class="btn btn-primary btn-lg " ng-click="print()">Print text</button>
 
     </div>
     
