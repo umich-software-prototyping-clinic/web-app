@@ -9,14 +9,15 @@ app
    $scope.username = ParseSvc.getUsername();
 }])
 .controller('userlist', ['$scope', 'ParseSvc', function($scope, ParseSvc){
+  $scope.users = [];
   $scope.sucessCallback = function(results) {
     for (i = 0; i < results.length; ++i) {
-      $scope.users.push(results[i].getUsername());
-    }
+       $scope.users.push(results[i].getUsername());
+    } 
+    $scope.$apply();
     console.log($scope.users);
   };
   ParseSvc.getUsers($scope.sucessCallback);
-  $scope.users = [];
 }])
 .controller('login', ['$scope', '$rootScope','ParseSvc', function($scope, $rootScope, ParseSvc){
    $scope.user = {
