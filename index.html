@@ -24,7 +24,7 @@
 
 
 <div class="container" ng-controller="main">
-  <h2>Welcome {{username}}!</h2>
+  <h2>Example App</h2>
   <ul class="nav nav-tabs">
     <li role="presentation"><a data-toggle="tab" href="#userlist">User List</a></li> 
     <li role="presentation"><a data-toggle="tab" href="#print">Print Text</a></li> 
@@ -36,16 +36,28 @@
         <li><a data-toggle="tab" href="#login">Login</a></li>
         <li><a data-toggle="tab" href="#logout">Logout</a></li>
         <li role="separator" class="divider"></li>
-        <li>Welcome {{username}}</li>
+        <li ng-show="isUser()"><a>Welcome {{username}}!</a></li>
+        <li ng-hide="isUser()"><a>Not Logged In</a></li>
       </ul>
     </li>
   </ul>
   <div class="tab-content">
     <div id="userlist" class="tab-pane fade" ng-controller="userlist">
       <h1> User List </h1>
-      <ul class="list-group">
-        <li ng-repeat="user in users">{{user}}</li>
-      </ul>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users">
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div id="print" class="tab-pane fade" ng-controller="print">

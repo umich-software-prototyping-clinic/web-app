@@ -11,12 +11,24 @@ app
     $scope.username= data;
     $scope.$apply();
   });
+  $scope.isUser =function() {
+    if ($scope.username === "" || $scope.username === undefined) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
 }])
 .controller('userlist', ['$scope', 'ParseSvc', function($scope, ParseSvc){
   $scope.users = [];
   $scope.sucessCallback = function(results) {
+    console.log(results[0].getEmail());
     for (i = 0; i < results.length; ++i) {
-      $scope.users.push(results[i].getUsername());
+      $scope.users.push({
+        username: results[i].getUsername(),
+        email: results[i].getEmail()
+      });
     } 
     $scope.$apply();
     console.log($scope.users);
@@ -170,7 +182,7 @@ app
     },
     getUsers: function(sucessCallback) {
       var user_query = new Parse.Query(Parse.User);
-      user_query.select("username");
+      user_query.select("username", "email");
       user_query.find().then(function(results) {
         sucessCallback(results);
       });
