@@ -81,9 +81,12 @@ app
   }
 
 }])
-.controller('logout', ['$scope','ParseSvc', function($scope, ParseSvc){
+.controller('logout', ['$scope','$rootScope','ParseSvc', function($scope, $rootScope, ParseSvc){
+  var logoutCallback = function() {
+    $rootScope.$broadcast('new username','');
+  }
   $scope.logout = function () {
-    ParseSvc.logout()
+    ParseSvc.logout(logoutCallback)
   }
 
 }])
@@ -155,12 +158,15 @@ app
         }
       });
     },
-    logout: function() {
+    logout: function(sucessCallback) {
       Parse.User.logOut();
       console.log('logged out');
       alert('logged out');
+
       var currentUser = Parse.User.current(); 
       user = Parse.User.current(); 
+      isRegistered = false;
+      sucessCallback();
     },
     getUsers: function(sucessCallback) {
       var user_query = new Parse.Query(Parse.User);
