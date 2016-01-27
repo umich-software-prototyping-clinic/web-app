@@ -74,6 +74,7 @@ app
   $scope.user = {
     username: null,
     password: null,
+    password2: null,
     email: null,
     firstName: null,
     lastName: null
@@ -82,6 +83,10 @@ app
     $rootScope.username = ParseSvc.getUsername();
   }
   $scope.signUp = function () {
+    if ($scope.user.password !== $scope.user.password2) {
+      alert('Passwords don\'t match');
+      return;
+    }
     ParseSvc.signUp($scope.user, signupCallback);
   }
 
