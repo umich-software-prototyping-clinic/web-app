@@ -61,11 +61,11 @@
     </div>
 
     <div id="print" class="tab-pane fade" ng-controller="print">
+      <!--code goes here-->
       <p>
         {{printedText}}
       </p>
-      <button type="button" class="btn btn-primary btn-lg " ng-click="print()">Print</button>
-
+      <button type="button" class="btn btn-primary btn-lg " ng-click="print()">Press to Print</button>
     </div>
     
     <div id="login" class="tab-pane fade in active" ng-controller="login">
@@ -83,11 +83,7 @@
           <input type="password" class="form-control" id="pwd" placeholder="Enter password" ng-model="user.password">
           </div>
         </div>
-        <!-- <div class="checkbox">
-          <label><input type="checkbox">Remember me</label>
-        </div> -->
-        
-          <button type="submit" class="btn btn-primary" ng-click="login()">Submit</button>
+        <button type="submit" class="btn btn-primary" ng-click="login()">Submit</button>
       </form>
       <br>
       <div class="row">
