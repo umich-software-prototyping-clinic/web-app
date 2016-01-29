@@ -9,7 +9,9 @@ app
   $scope.username = $rootScope.username;
   $rootScope.$on('new username', function(event, data){
     $scope.username= data;
-    $scope.$apply();
+    if ($scope.username !== "" ) {
+      $scope.$apply();
+    }
   });
   $scope.isUser =function() {
     if ($scope.username === "" || $scope.username === undefined) {
@@ -100,10 +102,10 @@ app
 }])
 .controller('logout', ['$scope','$rootScope','ParseSvc', function($scope, $rootScope, ParseSvc){
   var logoutCallback = function() {
-    $rootScope.$broadcast('new username','');
+    $rootScope.$broadcast('new username', "");
   }
   $scope.logout = function () {
-    ParseSvc.logout(logoutCallback)
+    ParseSvc.logout(logoutCallback);
   }
 
 }])
@@ -145,6 +147,7 @@ app
       });
     },
     signUp: function(_user, successCallback) {
+      user = new Parse.User();
       user.set("username", _user.username.toLowerCase());
       user.set("email", _user.email);
       user.set("password", _user.password);
