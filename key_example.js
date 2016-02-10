@@ -5,9 +5,9 @@
 //
 // The keys can be accessed by including the keys module and 
 // calling KeySvc.key1, KeySvc.key2
-angular.module('keys_example', [])
+angular.module('keys', [])
 
-.factory('KeySvcExample', function() {
+.factory('KeySvc', function() {
     return {
         key1:"****************************************",
         key2:"****************************************"
