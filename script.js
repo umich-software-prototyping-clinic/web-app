@@ -42,18 +42,21 @@ app
 //code to print text
 
 
-.controller('print', ['$scope', function($scope){
-  $scope.show_content = false; //this boolean tells us whether we should be displaying text
-  $scope.printedText = ""; //by default the printedText is empty so nothing will be shown
 
-  $scope.print = function() {
-    $scope.show_content = !$scope.show_content; //invert the value of show_content
-    if($scope.show_content) 
-      $scope.printedText = "Hello World";
-    else
-      $scope.printedText = "";
-  }
-}])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .controller('login', ['$scope', '$rootScope','ParseSvc', function($scope, $rootScope, ParseSvc){
   //callback function to set global username on login sucess
