@@ -9,7 +9,9 @@ angular.module('keys', [])
 
 .factory('KeySvc', function() {
     return {
+        //App Key
         key1:"****************************************",
+        //JavaScript Key
         key2:"****************************************"
     };
 });
