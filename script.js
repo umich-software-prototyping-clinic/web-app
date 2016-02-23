@@ -6,6 +6,11 @@ var app = angular.module('app', ['keys']);
 // create the controller and inject Angular's $scope
 app
 .controller('main', ['$scope', '$rootScope', 'ParseSvc', function($scope, $rootScope, ParseSvc){
+  //calls appOpened once on controller's instantiation
+  var init = function() {
+    ParseSvc.appOpened();
+  };
+  init();
   $scope.username = $rootScope.username;
   $rootScope.$on('new username', function(event, data){
     $scope.username= data;
@@ -25,7 +30,6 @@ app
 .controller('userlist', ['$scope', 'ParseSvc', function($scope, ParseSvc){
   $scope.users = [];
   $scope.sucessCallback = function(results) {
-    console.log(results[0].getEmail());
     for (i = 0; i < results.length; ++i) {
       $scope.users.push({
         username: results[i].getUsername(),
@@ -40,7 +44,6 @@ app
 
 
 //code to print text
-
 
 
 
@@ -86,8 +89,7 @@ app
     password: null,
     password2: null,
     email: null,
-    firstName: null,
-    lastName: null
+    name: null
   };
   if(ParseSvc.isRegistered) {
     $rootScope.username = ParseSvc.getUsername();
@@ -121,9 +123,9 @@ app
 
   key1 = KeySvc.key1;
   key2 = KeySvc.key2;
+  key3 = KeySvc.key3;
   Parse.initialize(key1, key2);
   var isRegistered;
-
   var user = Parse.User.current();
   if (user) {
     isRegistered = true;
@@ -201,6 +203,26 @@ app
       user_query.select("username", "email");
       user_query.find().then(function(results) {
         sucessCallback(results);
+      });
+    },
+    appOpened: function() {
+      $http({
+        method: 'POST',
+        url: 'https://api.parse.com/1/events/AppOpened',
+        headers: {
+          'X-Parse-Application-Id': "9gVPgmfhQbcvkd5jwXdtuCmIjqXLiAFWkfBGPu9s", 
+          'X-Parse-REST-API-Key': "kyhaSMYNAGSslxKpiikk4BShk0GjkffpUTUrOp7P",
+          'Content-Type': "application/json"
+        },
+        data: {}
+      });
+    },
+    printClicked: function(text) {
+      today = new Date();
+      Parse.Analytics.track('print', {
+        text: text,
+        date: today.toString(),
+        platform: 'web'
       });
     }
   };
