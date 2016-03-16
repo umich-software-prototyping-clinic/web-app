@@ -59,8 +59,6 @@ app
 
 
 
-
-
 .controller('login', ['$scope', '$rootScope','ParseSvc', function($scope, $rootScope, ParseSvc){
   //callback function to set global username on login sucess
   //This is neccessary because JavaScript runs sychronously

@@ -1,0 +1,23 @@
+Part 1: Button Color
+index.html
+<button type="button" class="btn btn-danger btn-lg " ng-click="print()">Press to Print</button>
+
+Part 2: Button Text
+index.html
+<button type="button" class="btn btn-primary btn-lg " ng-click="print()">Go!</button>
+
+Part 3: Slider
+index.html
+<div class="row">
+  <div class="col-md-4">
+    <p>
+      {{slider}}
+    </p>
+    <input type="range" name="slider" ng-model="slider" min="0" max="10">
+  </div>
+</div>
+ 
+script.js (in the print controller)
+$scope.slider = 5;
+    
+
