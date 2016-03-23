@@ -8,16 +8,6 @@ index.html
 
 Part 3: Slider
 index.html
-<div class="row">
-  <div class="col-md-4">
-    <p>
-      {{slider}}
-    </p>
-    <input type="range" name="slider" ng-model="slider" min="0" max="10">
-  </div>
-</div>
- 
-script.js (in the print controller)
-$scope.slider = 5;
-    
-
+<p ng-class="{'bg-primary': toggle == 1, 'bg-danger': toggle == 2}"> Select a color </p>
+<input type="radio" name="background" value="1" ng-model="toggle" ng-init="toggle=1">Normal</input>
+<input type="radio" name="background" value="2" ng-model="toggle">Error</input>
