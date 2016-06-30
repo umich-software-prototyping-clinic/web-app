@@ -49,16 +49,6 @@ app
 
 
 
-
-
-
-
-
-
-
-
-
-
 .controller('login', ['$scope', '$rootScope','ParseSvc', function($scope, $rootScope, ParseSvc){
   //callback function to set global username on login sucess
   //This is neccessary because JavaScript runs sychronously
@@ -123,6 +113,7 @@ app
   key2 = KeySvc.key2;
   key3 = KeySvc.key3;
   Parse.initialize(key1, key2);
+  Parse.serverURL = 'https://parseapi.back4app.com';
   var isRegistered;
   var user = Parse.User.current();
   if (user) {
@@ -206,7 +197,7 @@ app
     appOpened: function() {
       $http({
         method: 'POST',
-        url: 'https://api.parse.com/1/events/AppOpened',
+        url: 'https:/api.parse.com/api.parse.com/1/events/AppOpened',
         headers: {
           'X-Parse-Application-Id': "9gVPgmfhQbcvkd5jwXdtuCmIjqXLiAFWkfBGPu9s", 
           'X-Parse-REST-API-Key': "kyhaSMYNAGSslxKpiikk4BShk0GjkffpUTUrOp7P",
