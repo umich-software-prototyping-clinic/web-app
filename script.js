@@ -197,7 +197,7 @@ app
     appOpened: function() {
       $http({
         method: 'POST',
-        url: 'https://https://parseapi.back4app.com/1/events/AppOpened',
+        url: 'https://parseapi.back4app.com/1/events/AppOpened',
         headers: {
           'X-Parse-Application-Id': "9gVPgmfhQbcvkd5jwXdtuCmIjqXLiAFWkfBGPu9s", 
           'X-Parse-REST-API-Key': "kyhaSMYNAGSslxKpiikk4BShk0GjkffpUTUrOp7P",
