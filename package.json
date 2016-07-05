@@ -1,0 +1,22 @@
+{
+  "name": "web-app",
+  "version": "1.0.0",
+  "description": "a template web app",
+  "main": "script.js",
+  "dependencies": {
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umich-software-prototyping-clinic/web-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/umich-software-prototyping-clinic/web-app/issues"
+  },
+  "homepage": "https://github.com/umich-software-prototyping-clinic/web-app#readme"
+}

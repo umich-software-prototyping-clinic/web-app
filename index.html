@@ -9,13 +9,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <!-- AngularJS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
-  <!-- Parse -->
-  <script src="https://www.parsecdn.com/js/parse-1.6.7.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
   <!--local page scripts-->
   <script src="script.js"></script>
   <script src="keys.js"></script>
+  <!--Parse-->
+  <script src="http://www.parsecdn.com/js/parse-latest.js"></script>
 
 
 
@@ -65,7 +64,7 @@
     </div>
     
     <div id="login" class="tab-pane fade in active" ng-controller="login">
-      <form role="form">
+      <form role="form" ng-submit="login()">
         <h2 class="form-signin-heading">Sign in</h2>
         <div class="row">
           <div class="col-md-6 form-group">
@@ -79,7 +78,7 @@
           <input type="password" class="form-control" id="pwd" placeholder="Enter password" ng-model="user.password">
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" ng-click="login()">Submit</button>
+        <button type="submit" class="btn btn-primary" >Submit</button>
       </form>
       <br>
       <div class="row">

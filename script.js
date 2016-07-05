@@ -44,7 +44,8 @@ app
 
 
 //code to print text
-
+.controller('print', ['$scope','ParseSvc', function($scope, ParseSvc){
+}])
 
 
 
